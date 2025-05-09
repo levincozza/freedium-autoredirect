@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Freedium Redirect",
+  "version": "1.1",
+  "description": "Redirects all Medium links to Freedium",
+  "permissions": ["scripting", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Redirect to Freedium"
+  },
+  "commands": {
+    "redirect-to-freedium": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Redirect current Medium tab to Freedium"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
